@@ -18,22 +18,32 @@ import { Button } from "../Button";
 import { ProductInterface } from "../../types/Product";
 import { OrderConfirmedModal } from "../OrderConfirmedModal";
 import { useState } from "react";
+import { api } from "../../utils/api";
 
 interface CartProps {
     cartItems: CartItem[];
     onAdd: (product: ProductInterface) => void;
     onDecrement: (product: ProductInterface) => void;
     onConfirmOrder: () => void;
+    selectedTable: string
 }
 
-export function Cart({ cartItems, onAdd, onDecrement, onConfirmOrder }: CartProps) {
-    const [isLoading] = useState(false);
+export function Cart({ cartItems, onAdd, onDecrement, onConfirmOrder, selectedTable }: CartProps) {
+    const [isLoading, setIsLoading] = useState(false);
     const [isModalVisible, setIsModalVisible] = useState(false);
     const total = cartItems.reduce((acc, cartItem) => {
         return acc + cartItem.quantity * cartItem.product.price;
     }, 0);
 
-    function handleConfirmOrder() {
+    async function handleConfirmOrder() {
+        setIsLoading(true);
+        const payload = {
+            // tableId: selectedTable,
+            tableId: '65f9ce26eefaa8b070925109',
+            itensSale: cartItems.map((cartItem) => (cartItem.product._id))
+        };
+        await api.post('/sale/addItem', payload);
+        setIsLoading(false);
         setIsModalVisible(true)
     }
 
@@ -58,7 +68,7 @@ export function Cart({ cartItems, onAdd, onDecrement, onConfirmOrder }: CartProp
                         <Item>
                             <ProductContainer>
                                 <Image source={{
-                                    uri: `${cartItem.product.imagePath}`
+                                    uri: `${cartItem.product.image}`
                                 }} />
 
                                 <QuantityContainer>

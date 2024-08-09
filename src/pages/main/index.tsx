@@ -11,21 +11,46 @@ import { Categories } from '../../components/Categories';
 import { Menu } from '../../components/Menu';
 import { Button } from '../../components/Button';
 import { TableModal } from '../../components/TableModal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Cart } from '../../components/Cart';
 import { CartItem } from '../../types/cartItem';
-import { products as mockProducts } from '../../mocks/products';
 import { ProductInterface } from '../../types/Product';
 import { ActivityIndicator } from 'react-native';
 import { Empty } from '../../components/Icons/Empty';
 import { Text } from '../../components/Text';
+import { CategoryInterface } from '../../types/Category';
+import { api } from '../../utils/api';
 
 export default function Main() {
     const [isTableModalVisible, setIstTableModalVisible] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [selectedTable, setSelectedTable] = useState('');
-    const [cartItems, setCartItems] = useState<CartItem[]>([])
-    const [products] = useState<ProductInterface[]>(mockProducts)
+    const [cartItems, setCartItems] = useState<CartItem[]>([]);
+    const [categories, setCategories] = useState<CategoryInterface[]>([]);
+    const [products, setProducts] = useState<ProductInterface[]>([]);
+    const [isLoadingProducts, setIsLoadingProducts] = useState(false);
+
+    useEffect(() => {
+        Promise.all([
+            api.get('/category'),
+            api.get('/product')
+        ]).then(([categoriesResponse, productsResponse]) => {
+            setCategories(categoriesResponse.data.data);
+            setProducts(productsResponse.data.data);
+            setIsLoading(false);
+        });
+    }, []);
+
+    async function handleSelectCategory(categoryId: string) {
+        const route = !categoryId
+            ? '/product'
+            : `/product/category/${categoryId}`;
+
+        setIsLoadingProducts(true);
+        const { data } = await api.get(route);
+        setProducts(data.data);
+        setIsLoadingProducts(false);
+    }
 
     function handleSaveTable(table: string) {
         setSelectedTable(table);
@@ -99,20 +124,31 @@ export default function Main() {
                 {!isLoading && (
                     <>
                         <CategoriesContainer>
-                            <Categories />
+                            <Categories
+                                categories={categories}
+                                onSelectCategory={handleSelectCategory}
+                            />
                         </CategoriesContainer>
 
-                        {products.length > 0 ? (
-                            <MenuContainer>
-                                <Menu
-                                    onAddToCart={handleAddToCart}
-                                    products={products}
-                                />
-                            </MenuContainer>
-                        ) : <CenteredContainer>
-                            <Empty />
-                            <Text color="#666" style={{ marginTop: 24 }}>Nenhum produto foi encontrado</Text>
-                        </CenteredContainer>}
+                        {isLoadingProducts ? (
+                            <CenteredContainer>
+                                <ActivityIndicator color="#D73035" size="large" />
+                            </CenteredContainer>
+                        ) : (
+                            <>
+                                {products.length > 0 ? (
+                                    <MenuContainer>
+                                        <Menu
+                                            onAddToCart={handleAddToCart}
+                                            products={products}
+                                        />
+                                    </MenuContainer>
+                                ) : <CenteredContainer>
+                                    <Empty />
+                                    <Text color="#666" style={{ marginTop: 24 }}>Nenhum produto foi encontrado</Text>
+                                </CenteredContainer>}
+                            </>
+                        )}
                     </>
                 )}
 
@@ -134,6 +170,7 @@ export default function Main() {
                             cartItems={cartItems}
                             onDecrement={handleDecrementCartItem}
                             onConfirmOrder={handleResetOrder}
+                            selectedTable={selectedTable}
                         />
                     )}
                 </FooterContainer>
