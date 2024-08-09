@@ -30,7 +30,7 @@ export default function Login() {
                 </Animatable.View>
             </ViewContainerLogo>
             <ViewContainerForm>
-                <Animatable.View delay={500} animation="fadeInUp">
+                <Animatable.View delay={200} animation="fadeInUp">
                     <LoginContainer>
                         <Icon>
                             <TouchableOpacity>
@@ -49,7 +49,7 @@ export default function Login() {
                         </Icon>
                     </LoginContainer >
                 </Animatable.View>
-                <Animatable.View delay={500} animation="fadeInUp" style={{ alignItems: 'center', flex: 1 }}>
+                <Animatable.View delay={200} animation="fadeInUp" style={{ alignItems: 'center', flex: 1 }}>
                     <Text size={14} weight="600">Login com</Text>
                     <Text size={14}>ou</Text>
                     <ModalForm>
@@ -65,7 +65,7 @@ export default function Login() {
                         />
 
                         <Button onPress={() => navigation.navigate("Main")}>
-                            Salvar
+                            Entrar
                         </Button>
                         <TouchableOpacity style={{ marginTop: 14, alignSelf: 'center' }}>
                             <Text size={14} color="#a1a1a1">Não possui uma conta? Cadastre-se</Text>

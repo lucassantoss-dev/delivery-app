@@ -41,7 +41,7 @@ export function ProductModal({ visible, onClose, product, onAddToCart }: Product
             onRequestClose={onClose}
         >
             <Image source={{
-                uri: `${product.imagePath}`
+                uri: `${product.image}`
             }}>
                 <CloseButton onPress={onClose}>
                     <Close />
@@ -53,7 +53,7 @@ export function ProductModal({ visible, onClose, product, onAddToCart }: Product
                     <Text color="#666" style={{ marginTop: 8 }}>{product.description}</Text>
                 </Header>
 
-                {product.ingredients.length > 0 && (
+                {product.ingredients?.length > 0 && (
                     <IngredientsContainer>
                         <Text weight="600" color="#666">Ingredientes</Text>
                         <FlatList
