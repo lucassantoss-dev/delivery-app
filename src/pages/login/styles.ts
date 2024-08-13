@@ -23,6 +23,19 @@ export const ViewContainerForm = styled.View`
     padding: 5%
 `;
 
+export const ModalForm = styled.View`
+    margin-top: 32px;
+`;
+
+export const Input = styled.TextInput`
+    background: #fff;
+    border: 1px solid rgba(204, 204, 204, 0.5);
+    border-radius: 16px;
+    padding: 12px;
+    margin-bottom: 24px;
+    min-width: 320px;
+`;
+
 export const LoginContainer = styled.View`
     height: 83px;
     margin-top: 1px;
@@ -36,19 +49,6 @@ export const IconImage = styled.ImageBackground`
     width: 44px;
     height: 44px;
     border-radius: 22px;
-`;
-
-export const ModalForm = styled.View`
-    margin-top: 32px;
-`;
-
-export const Input = styled.TextInput`
-    background: #fff;
-    border: 1px solid rgba(204, 204, 204, 0.5);
-    border-radius: 16px;
-    padding: 12px;
-    margin-bottom: 24px;
-    min-width: 320px;
 `;
 
 export const Icon = styled.View`

@@ -1,6 +1,7 @@
 import { TouchableOpacity } from "react-native";
 import { Text } from "../Text";
-import { Container, Content, OrderHeader, Table } from "./styles";
+import { Container, Content, HeaderContainer, OrderHeader, Table, TextContainer, UserContainer, UserImage } from "./styles";
+import { Image } from "react-native-svg";
 
 interface HeaderProps {
     selectedTable: string;
@@ -12,10 +13,19 @@ export function Header({ selectedTable, onCancelOrder }: HeaderProps) {
         <Container>
             {!selectedTable && (
                 <>
-                    <Text size={14} opacity={0.9}>Bem-vindo(a) ao</Text>
-                    <Text size={24} weight="700">Twins
-                        <Text size={24}>Fusion</Text>
-                    </Text>
+                    <HeaderContainer>
+                        <TextContainer>
+                            <Text size={14} opacity={0.9}>Bem-vindo(a) ao</Text>
+                            <Text size={24} weight="700">Twins
+                                <Text size={24}>Fusion</Text>
+                            </Text>
+                        </TextContainer>
+                        <UserContainer>
+                            {/* <UserImage source={{ uri: user?.imageUrl }}/> */}
+                            <Image />
+                            <Text>Teste</Text>
+                        </UserContainer>
+                    </HeaderContainer>
                 </>
             )}
 
