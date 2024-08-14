@@ -13,19 +13,10 @@ export function Header({ selectedTable, onCancelOrder }: HeaderProps) {
         <Container>
             {!selectedTable && (
                 <>
-                    <HeaderContainer>
-                        <TextContainer>
-                            <Text size={14} opacity={0.9}>Bem-vindo(a) ao</Text>
-                            <Text size={24} weight="700">Twins
-                                <Text size={24}>Fusion</Text>
-                            </Text>
-                        </TextContainer>
-                        <UserContainer>
-                            {/* <UserImage source={{ uri: user?.imageUrl }}/> */}
-                            <Image />
-                            <Text>Teste</Text>
-                        </UserContainer>
-                    </HeaderContainer>
+                    <Text size={14} opacity={0.9}>Bem-vindo(a) ao</Text>
+                    <Text size={24} weight="700">Twins
+                        <Text size={24}>Fusion</Text>
+                    </Text>
                 </>
             )}
 
