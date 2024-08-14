@@ -19,3 +19,19 @@ export const Table = styled.View`
     border-radius: 8px;
     margin-top: 24px;
 `;
+
+export const HeaderContainer = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+`;
+export const TextContainer = styled.View``;
+export const UserContainer = styled.View`
+    align-items: center;
+    justify-content: center;
+`;
+
+export const UserImage = styled.ImageBackground`
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+`;

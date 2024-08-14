@@ -1,6 +1,7 @@
 import { TouchableOpacity } from "react-native";
 import { Text } from "../Text";
-import { Container, Content, OrderHeader, Table } from "./styles";
+import { Container, Content, HeaderContainer, OrderHeader, Table, TextContainer, UserContainer, UserImage } from "./styles";
+import { Image } from "react-native-svg";
 
 interface HeaderProps {
     selectedTable: string;
