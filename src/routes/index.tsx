@@ -4,6 +4,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Welcome from '../pages/welcome';
 import Login from '../pages/login';
 import Main from '../pages/main';
+import Orders from '../pages/orders';
+import Search from '../pages/search';
 import { ClerkProvider, useAuth, useSignIn, useUser } from '@clerk/clerk-expo';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { tokenCache } from '../utils/tokenCache';
@@ -64,7 +66,7 @@ function MainTabs() {
             />
             <Tab.Screen
                 name="Buscar"
-                component={Profile}
+                component={Search}
                 options={{
                     tabBarIcon: ({ focused }) => {
                         return (
@@ -92,7 +94,7 @@ function MainTabs() {
             /> */}
             <Tab.Screen
                 name="Notificações"
-                component={Profile}
+                component={Orders}
                 options={{
                     tabBarIcon: ({ focused }) => {
                         return (

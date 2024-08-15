@@ -67,9 +67,7 @@ export function Cart({ cartItems, onAdd, onDecrement, onConfirmOrder, selectedTa
                     renderItem={({ item: cartItem }) => (
                         <Item>
                             <ProductContainer>
-                                <Image source={{
-                                    uri: `${cartItem.product.image}`
-                                }} />
+                                <Image source={{ uri: `${cartItem.product.image}`}} />
 
                                 <QuantityContainer>
                                     <Text size={14} color="#666">
