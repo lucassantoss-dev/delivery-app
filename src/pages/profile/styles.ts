@@ -32,8 +32,42 @@ export const ImageProfile = styled.Image`
 
 export const ProfileContent = styled.View`
     flex: 2;
+    border-radius: 12px;
+    background-color: #fff;
 `;
 export const BoxProfile = styled.View`
     flex-direction: row;
     align-items: center;
+`;
+
+export const ProfileFooter = styled.View`
+    flex: 1;
+    border-radius: 12px;
+    padding: 8px;
+    background-color: #fff;
+`;
+
+export const SettingsButton = styled.TouchableOpacity`
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border-radius: 12px;
+    border-bottom: 1px solid #e3e3e3;
+    margin-bottom: 12px;
+    height: 64px;
+`;
+
+export const IconWrapper = styled.View`
+    margin-right: 8px;
+`;
+
+export const ImageConfiguration = styled.Image`
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+`;
+
+export const DescriptionProfile = styled.View`
+
 `;
