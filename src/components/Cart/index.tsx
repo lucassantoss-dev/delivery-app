@@ -67,7 +67,7 @@ export function Cart({ cartItems, onAdd, onDecrement, onConfirmOrder, selectedTa
                     renderItem={({ item: cartItem }) => (
                         <Item>
                             <ProductContainer>
-                                <Image source={{ uri: `${cartItem.product.image}`}} />
+                                <Image source={{ uri: `${cartItem.product.image}` }} />
 
                                 <QuantityContainer>
                                     <Text size={14} color="#666">
@@ -80,13 +80,13 @@ export function Cart({ cartItems, onAdd, onDecrement, onConfirmOrder, selectedTa
                                 </ProductDetails>
                             </ProductContainer>
                             <Actions>
-                                <TouchableOpacity
-                                    onPress={() => onAdd(cartItem.product)}
-                                    style={{ marginRight: 24 }}>
-                                    <PlusCircle></PlusCircle>
-                                </TouchableOpacity>
                                 <TouchableOpacity onPress={() => onDecrement(cartItem.product)}>
                                     <MinusCircle></MinusCircle>
+                                </TouchableOpacity>
+                                <TouchableOpacity
+                                    onPress={() => onAdd(cartItem.product)}
+                                    style={{ marginLeft: 24 }}>
+                                    <PlusCircle></PlusCircle>
                                 </TouchableOpacity>
                             </Actions>
                         </Item>
