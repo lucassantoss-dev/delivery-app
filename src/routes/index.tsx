@@ -6,6 +6,7 @@ import Login from '../pages/login';
 import Main from '../pages/main';
 import Orders from '../pages/orders';
 import Search from '../pages/search';
+import Account from '../pages/profile/components/changeProfile';
 import { ClerkProvider, useAuth, useSignIn, useUser } from '@clerk/clerk-expo';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { tokenCache } from '../utils/tokenCache';
@@ -25,7 +26,8 @@ export type RootStackParamList = {
     Inicio: undefined;
     Notificações: undefined;
     Buscar: undefined;
-    Novo: undefined
+    Novo: undefined;
+    Conta: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -157,6 +159,11 @@ function Layout() {
                 name="Login"
                 component={Login}
                 options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="Conta"
+                component={Account}
+                options={{  }}
             />
             <Stack.Screen
                 name="Main"
