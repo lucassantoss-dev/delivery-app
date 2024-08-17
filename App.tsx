@@ -1,7 +1,5 @@
 import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
-import { Main } from './src/pages/main';
-import Login from './src/pages/login';
 import { NavigationContainer } from '@react-navigation/native';
 import Routes from './src/routes';
 export default function App() {

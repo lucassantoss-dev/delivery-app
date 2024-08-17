@@ -45,6 +45,7 @@ export const ProfileFooter = styled.View`
     border-radius: 12px;
     padding: 8px;
     background-color: #fff;
+    margin-bottom: 20px;
 `;
 
 export const SettingsButton = styled.TouchableOpacity`
@@ -55,7 +56,7 @@ export const SettingsButton = styled.TouchableOpacity`
     border-radius: 12px;
     border-bottom: 1px solid #e3e3e3;
     margin-bottom: 12px;
-    height: 64px;
+    height: 54px;
 `;
 
 export const IconWrapper = styled.View`
