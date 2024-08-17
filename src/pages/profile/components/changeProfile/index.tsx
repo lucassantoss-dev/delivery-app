@@ -61,13 +61,13 @@ export default function Account() {
                             bottom: 0,
                             right: 0,
                             backgroundColor: '#D73035',
-                            width: 40,
-                            height: 40,
-                            borderRadius: 20,
-                            padding: 4,
+                            width: 50,
+                            height: 50,
+                            borderRadius: 25,
+                            padding: 6,
                         }}
                     >
-                        <EvilIcons name="camera" size={32} color="#fff" />
+                        <EvilIcons name="camera" size={38} color="#fff" />
                     </TouchableOpacity>
                 </View>
             </ImageContainer>
