@@ -44,7 +44,7 @@ export default function Profile() {
                 <Text size={14} color="#9b9898" style={{ marginBottom: 12, marginLeft: 4 }}>Configurações</Text>
             </Animatable.View>
             <ProfileContent>
-                <SettingsButton onPress={() => { navigation.navigate("Conta") }}>
+                <SettingsButton onPress={() => { navigation.navigate("Cupons de Desconto") }}>
                     <Animatable.View animation="fadeInLeft" style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
                         <IconWrapper>
                             <ImageConfiguration source={{ uri: 'https://static.vecteezy.com/ti/vetor-gratis/p3/23642809-cupom-icone-isolado-em-branco-fundo-vetor.jpg' }} />

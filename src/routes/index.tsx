@@ -7,6 +7,7 @@ import Main from '../pages/main';
 import Orders from '../pages/orders';
 import Search from '../pages/search';
 import Account from '../pages/profile/components/changeProfile';
+import Coupons from '../pages/profile/components/discountCoupons';
 import { ClerkProvider, useAuth, useSignIn, useUser } from '@clerk/clerk-expo';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { tokenCache } from '../utils/tokenCache';
@@ -28,6 +29,7 @@ export type RootStackParamList = {
     Buscar: undefined;
     Novo: undefined;
     Conta: undefined;
+    'Cupons de Desconto': undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -47,6 +49,33 @@ const screenOptions = {
         height: 60,
         backgroud: "#fff"
     }
+}
+
+function ProfileStack() {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen
+                name="Perfil"
+                component={Profile}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="Conta"
+                component={Account}
+                options={{ headerTitle: 'Conta' }}
+            />
+            <Stack.Screen
+                name="Cupons de Desconto"
+                component={Coupons}
+                options={{
+                    headerTitle: 'Cupons de Desconto',
+                    headerStyle: {
+                        backgroundColor: '#fff',
+                    }
+                }}
+            />
+        </Stack.Navigator>
+    );
 }
 
 function MainTabs() {
@@ -110,7 +139,7 @@ function MainTabs() {
             />
             <Tab.Screen
                 name="Perfil"
-                component={Profile}
+                component={ProfileStack}
                 options={{
                     tabBarIcon: ({ focused }) => {
                         return (
@@ -159,11 +188,6 @@ function Layout() {
                 name="Login"
                 component={Login}
                 options={{ headerShown: false }}
-            />
-            <Stack.Screen
-                name="Conta"
-                component={Account}
-                options={{  }}
             />
             <Stack.Screen
                 name="Main"
