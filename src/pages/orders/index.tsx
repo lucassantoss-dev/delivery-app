@@ -35,37 +35,42 @@ export default function Orders() {
         <>
             <FlatList
                 data={sales}
-                style={{ marginTop: 32 }}
-                contentContainerStyle={{ paddingHorizontal: 24 }}
+                style={{ marginTop: 32, padding: 0 }}
+                contentContainerStyle={{}}
                 keyExtractor={sale => sale._id}
-                ItemSeparatorComponent={OrdersContainer}
+                ItemSeparatorComponent={() => <Separator />}
                 renderItem={({ item: sale }) => (
-                    <OrdersContainer>
-                        <IconWrapper>
-                            <ImageConfiguration source={{ uri: sale.photo }} />
-                        </IconWrapper>
-                        <Separator>
-                            <OrderProvider>
-                                <Text size={18} weight="600" style={{ marginLeft: 18, marginBottom: 10, marginTop: 10 }}>{sale.provider}</Text>
-                            </OrderProvider>
-                            <StatusOrder>
-                                <Text size={15} color="#15c71e" weight="600">{sale.status === true ? 'Pedido finalizado' : 'Pedido pendente'}</Text>
-                            </StatusOrder>
-                            <CodeOrder>
-                                <FontAwesome name="circle" size={12} color="#000" style={{ marginRight: 8, marginLeft: 12 }} />
-                                <Text size={14} weight="600">{sale.code}</Text>
-                            </CodeOrder>
-                            <DateOrder>
-                                <Text size={15} color="#000" weight="600">{new Date(sale.date).toLocaleDateString('pt-BR')}</Text>
-                                <FontAwesome name="circle" size={8} color="#000" style={{ marginRight: 8, marginLeft: 12 }} />
-                                <Text>{formatCurrency(sale.total)}</Text>
-                            </DateOrder>
-                            <ButtonsOrder>
-                                <ResumeButton><Text size={16} color="#D73035" weight="600">Resumo</Text></ResumeButton>
-                                <Button onPress={() => { }}>Refazer</Button>
-                            </ButtonsOrder>
-                        </Separator>
-                    </OrdersContainer>
+                    <>
+                        <Text size={18} weight="600" style={{textAlign: 'center'}}>
+                            Meus pedidos
+                        </Text>
+                        <OrdersContainer>
+                            <IconWrapper>
+                                <ImageConfiguration source={{ uri: sale.photo }} />
+                            </IconWrapper>
+                            <Separator>
+                                <OrderProvider>
+                                    <Text size={18} weight="600" style={{ marginLeft: 18, marginBottom: 10, marginTop: 10 }}>{sale.provider}</Text>
+                                </OrderProvider>
+                                <StatusOrder>
+                                    <Text size={15} color="#15c71e" weight="600">{sale.status === true ? 'Pedido finalizado' : 'Pedido pendente'}</Text>
+                                </StatusOrder>
+                                <CodeOrder>
+                                    <FontAwesome name="circle" size={12} color="#000" style={{ marginRight: 8, marginLeft: 12 }} />
+                                    <Text size={14} weight="600">{sale.code}</Text>
+                                </CodeOrder>
+                                <DateOrder>
+                                    <Text size={15} color="#000" weight="600">{new Date(sale.date).toLocaleDateString('pt-BR')}</Text>
+                                    <FontAwesome name="circle" size={8} color="#000" style={{ marginRight: 8, marginLeft: 12 }} />
+                                    <Text>{formatCurrency(sale.total)}</Text>
+                                </DateOrder>
+                                <ButtonsOrder>
+                                    <ResumeButton><Text size={16} color="#D73035" weight="600">Resumo</Text></ResumeButton>
+                                    <Button onPress={() => { }}>Refazer</Button>
+                                </ButtonsOrder>
+                            </Separator>
+                        </OrdersContainer>
+                    </>
                 )}
             />
         </>

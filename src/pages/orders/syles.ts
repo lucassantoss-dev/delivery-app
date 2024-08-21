@@ -4,9 +4,8 @@ import styled from "styled-components/native";
 const isAndroid = Platform.OS === 'android';
 
 export const OrdersContainer = styled.SafeAreaView`
-    margin-top: ${isAndroid ? `${StatusBar.currentHeight}px` : '0'};
-    margin: 40px 0;
-    padding-left: 10px;
+    margin-top: 20px;
+    padding-left: 20px;
     border: 1px solid #c3c3c3;
     border-radius: 8px;
     background-color: #fff;
@@ -27,10 +26,9 @@ export const IconWrapper = styled.View`
 `;
 
 export const ImageConfiguration = styled.Image`
-    width: 70px;
-    height: 70px;
-    border-radius: 35px;
-    margin-right: -15px;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
 `;
 
 export const StatusOrder = styled.View`
@@ -53,18 +51,15 @@ export const DateOrder = styled.View`
 export const ButtonsOrder = styled.View`
     flex-direction: row;
     margin: 12px 0 0 0;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
 `;
 export const ResumeButton = styled.TouchableOpacity`
     background-color: #fff;
     border: 2px solid #D73035;
     border-radius: 48px;
-    padding: 14px 24px;
-    align-items: center;
-    justify-content: center;
     margin-right: 12px;
-    flex-grow: 1;
+     padding: 14px 24px;
 `;
 
 export const Separator = styled.View`
