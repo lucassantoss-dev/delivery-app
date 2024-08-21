@@ -15,9 +15,17 @@ import { Button } from "../../components/Button";
 import { SaleInterface } from "../../types/Sale";
 import { FlatList } from "react-native";
 import { api } from "../../utils/api";
+import SaleModal from "../../components/SaleModal";
 
 export default function Orders() {
     const [sales, setSales] = useState<SaleInterface[]>([])
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [selectedSale, setSelectedSale] = useState<null | SaleInterface>(null);
+
+    function handleOpenModal(sale: SaleInterface) {
+        setIsModalVisible(true)
+        setSelectedSale(sale)
+    }
 
     useEffect(() => {
         Promise.all([
@@ -29,6 +37,13 @@ export default function Orders() {
 
     return (
         <>
+            <SaleModal
+                visible={isModalVisible}
+                onClose={() => setIsModalVisible(false)}
+                sale={selectedSale}
+            >
+
+            </SaleModal>
             <FlatList
                 data={sales}
                 style={{ marginTop: 32, padding: 10 }}
@@ -44,45 +59,22 @@ export default function Orders() {
                                 }}
                             />
                             <ProductDetails>
-                                <Text weight="600">{sale.provider}</Text>
+                                <Text size={18} weight="600">{sale.provider}</Text>
                                 <Text size={15} color="#15c71e" weight="600">{sale.status === true ? 'Pedido finalizado' : 'Pedido pendente'}</Text>
-                                <Text size={14} weight="600">{sale.code}</Text>
+                                <Text size={14}>{sale.code}</Text>
                                 <DateOrder>
-                                    <Text size={15} color="#000" weight="600">{new Date(sale.date).toLocaleDateString('pt-BR')}</Text>
+                                    <Text size={15} color="#000">{new Date(sale.date).toLocaleDateString('pt-BR')}</Text>
                                     <FontAwesome name="circle" size={8} color="#000" style={{ marginRight: 8, marginLeft: 12 }} />
                                     <Text>{formatCurrency(sale.total)}</Text>
                                 </DateOrder>
                                 <ButtonsOrder>
-                                    <ResumeButton><Text size={16} color="#D73035" weight="600">Resumo</Text></ResumeButton>
+                                    <ResumeButton onPress={() => handleOpenModal(sale)}>
+                                        <Text size={16} color="#D73035" weight="600">Resumo</Text>
+                                    </ResumeButton>
                                     <Button onPress={() => { }}>Refazer</Button>
                                 </ButtonsOrder>
                             </ProductDetails>
                         </Sale>
-                        {/* <OrdersContainer>
-                            <IconWrapper>
-                                <ImageConfiguration source={{ uri: sale.photo }} />
-                            </IconWrapper>
-                            <Separator>
-                                <OrderProvider>
-                                    <Text size={18} weight="600" style={{ marginLeft: 18, marginBottom: 10, marginTop: 10 }}>{sale.provider}</Text>
-                                </OrderProvider>
-                                <StatusOrder>
-                                    <Text size={15} color="#15c71e" weight="600">{sale.status === true ? 'Pedido finalizado' : 'Pedido pendente'}</Text>
-                                </StatusOrder>
-                                <CodeOrder>
-                                    <Text size={14} weight="600" style={{marginLeft: 12}}>{sale.code}</Text>
-                                </CodeOrder>
-                                <DateOrder>
-                                    <Text size={15} color="#000" weight="600">{new Date(sale.date).toLocaleDateString('pt-BR')}</Text>
-                                    <FontAwesome name="circle" size={8} color="#000" style={{ marginRight: 8, marginLeft: 12 }} />
-                                    <Text>{formatCurrency(sale.total)}</Text>
-                                </DateOrder>
-                                <ButtonsOrder>
-                                    <ResumeButton><Text size={16} color="#D73035" weight="600">Resumo</Text></ResumeButton>
-                                    <Button onPress={() => { }}>Refazer</Button>
-                                </ButtonsOrder>
-                            </Separator>
-                        </OrdersContainer> */}
                     </>
                 )}
             />
