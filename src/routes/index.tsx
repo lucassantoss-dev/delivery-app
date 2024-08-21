@@ -30,6 +30,7 @@ export type RootStackParamList = {
     Novo: undefined;
     Conta: undefined;
     'Cupons de Desconto': undefined;
+    Profile: undefined
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -138,7 +139,7 @@ function MainTabs() {
                 }}
             />
             <Tab.Screen
-                name="Perfil"
+                name="Profile"
                 component={ProfileStack}
                 options={{
                     tabBarIcon: ({ focused }) => {
