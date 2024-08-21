@@ -3,7 +3,12 @@ import { CartItem } from "./cartItem";
 export interface SaleInterface {
     _id: string,
     date: Date,
-    itensSale: CartItem[],
+    itensSale: [{
+        _id: string,
+        name: string,
+        icon: string,
+        price: number
+    }],
     total: number,
     provider: string,
     code: string,
