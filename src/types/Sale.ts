@@ -13,5 +13,6 @@ export interface SaleInterface {
     provider: string,
     code: string,
     status: boolean,
-    photo: string
+    photo: string,
+    table: string
 }
