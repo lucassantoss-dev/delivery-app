@@ -5,6 +5,7 @@ import Welcome from '../pages/welcome';
 import Login from '../pages/login';
 import Main from '../pages/main';
 import Orders from '../pages/orders';
+import ProviderOrders from '../pages/provider-orders';
 import Search from '../pages/search';
 import Account from '../pages/profile/components/changeProfile';
 import Coupons from '../pages/profile/components/discountCoupons';
@@ -126,7 +127,7 @@ function MainTabs() {
             /> */}
             <Tab.Screen
                 name="Notificações"
-                component={Orders}
+                component={ProviderOrders}
                 options={{
                     tabBarIcon: ({ focused }) => {
                         return (
